@@ -8,7 +8,10 @@ body {
   height: 100vh;
   overflow: hidden;
   font-family: Arial, sans-serif;
-  background: white;
+  
+}
+#sec{
+  margin-top: 60px;
 }
 
 /* ---------------------------
@@ -56,6 +59,11 @@ body {
   justify-content: flex-start;
   animation: moveDown 1.5s ease-out 1.5s forwards; 
 }
+.subheading{
+  margin-left: 20px;
+  margin-top: 30px;
+  font-size: 20px;
+}
 
 /* ---------------------------
    ANIMATIONS
@@ -88,17 +96,21 @@ body {
 .content {
   width: 100%;
   height: 100%;
-  background: white;
   overflow-y: auto;
   opacity: 1; /* 항상 보이게 */
 }
 
-.frst { 
-  background: linear-gradient(65deg, #ffffff, #ffffff);
+#frst { 
+  background: rgb(231, 230, 255);
   padding: 0 20px;
   height: auto; 
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
-
+.line {
+  height: 2PX;
+  background-color: #000;
+}
 #img1, #img2 {
   width: 70%;
   height: auto;
@@ -119,10 +131,25 @@ canvas {
  
 }
 #viewer {
-  width: 100%;
-  height: 600px;
-  background: #fff;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 800px;
+  height: 500px;
+  background: #000;
   position: relative;
+
+  /* 테두리 */
+  border: 2px solid #111;      /* 원하는 색으로 */
+  border-radius: 12px;
+
+  /* 🔥 둥근 모서리 밖으로는 자식이 못 튀어나오게 */
+  overflow: hidden;
+
+  /* 테두리/패딩까지 포함해서 크기 계산 */
+  box-sizing: border-box;
+
+  /* 캔버스가 모서리를 가리지 않도록 패딩은 보통 0이 안전 */
+  padding: 0;
 }
 
 canvas {
@@ -152,11 +179,13 @@ canvas {
 .slider-wrapper {
       position: relative;
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      margin-bottom: 40px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      top:  100px;
+      top:  0px;
+      margin: 20px;    
+      padding: 2px ;  
+      background-color: #000;
     }
     .slider-container {
       display: flex;
@@ -172,13 +201,13 @@ canvas {
 
     .slider-item {
       flex: 0 0 100%;
-      aspect-ratio: 1;
       scroll-snap-align: start;
       scroll-snap-stop: always;
       user-select: none;
     }
 
     .slider-item img {
+       border-radius: 12px;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -208,10 +237,12 @@ canvas {
 
     /* 자동 캐로셀 */
     .carousel-wrapper {
-      background: white;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 200px;
+      height: 180px;
+      display: block;          /* inline → block으로 바꿔야 margin 작동함 */
+     margin: 0 auto;
+     background-image:url(./src/img/ch\ back.svg) ;
     }
 
     .carousel-container {
@@ -241,6 +272,8 @@ canvas {
       .purple {
       position: relative;
       background-color:#7a37e7;
+      height: 100%;
+      padding-bottom: 60px;
       
     
      
@@ -258,7 +291,7 @@ canvas {
       width: 70%;
         display: block;
       margin: 0 auto;
-      margin-top: 70px;
+    
     }
 
     .research {
@@ -280,45 +313,50 @@ canvas {
 
 
   .ph-viewer-wrap {
-    margin-top: -50px;
-    padding-bottom: 20px;
-   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 375 466.54' preserveAspectRatio='xMidYMin meet'><defs><linearGradient id='waveGradient' x1='0' y1='233.27' x2='375' y2='233.27' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f0c4f9'/><stop offset='1' stop-color='%23c2e2ff'/></linearGradient></defs><path fill='url(%23waveGradient)' d='M375,466.54V4.16c-31.64,5.74-41.37,15.36-52.51,26.04-13.28,12.73-18.5,35.26-50.95,38.3-13.98,1.31-20.53,11.99-23.34,18.97-2.88,7.14-7.02,13.72-12.52,19.12-8.96,8.79-23.55,18.91-43.82,19.88-21.16,1.02-41.49-8.27-54.98-24.54-4.2-5.07-8.45-10.1-12.91-14.95-7.48-8.12-16.7-19.44-31.96-22.43-11.96-2.34-27.15-9.83-39.74-32.15C46.43,22.03,30.75,4.16,0,0v466.54h375Z'/></svg>");
+  margin-top: 30px;
+  padding-bottom: 20px;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100% auto;
-   position: relative;
+  position: relative;
   width: 100%;
   }
     
 
+  
   .ph-viewer {
-    position: relative; 
-    height: 60vh; 
-    border-radius: 16px;
-    background: transparent;
     
-  }
+  position: relative;
+  height: 300px;
+  border-radius: 16px;
+  background: transparent;
+  overflow: hidden; /* 선택: 넘침 방지 */
+}
 
-  .ph-slide {
-   position: absolute;
-  inset: 0;
+.ph-slide {
+  position: absolute;
+  inset: 0;                 /* 🔥 부모 높이를 꽉 채움 */
   display: flex;
-  justify-content: center;   /* 가로 중앙 */
-  align-items: flex-start;     /* 아래로 붙임 */
-  padding-top: 70px; 
-  opacity: 0; transition: opacity .35s ease;
+  justify-content: center;  /* 가로 중앙 */
+  align-items: center;      /* 🔥 세로 중앙 */
+  padding-top: 0;           /* 🔥 위로 밀던 여백 제거 */
+  opacity: 0;
+  transition: opacity .35s ease;
   pointer-events: none;
 }
 
 
-  .ph-slide.ph-active { opacity: 1; pointer-events: auto; }
+  .ph-slide.ph-active { opacity: 1; pointer-events: auto; ;
+     }
 
-  .ph-slide img {
-    max-height: 70%;
-    object-fit: contain; 
-    user-select: none; 
-    pointer-events: none;
-  }
+ 
+.ph-slide img {
+  display: block;
+  max-height: 100%;          /* 필요시 60~80%로 조절 */
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
 
   .ph-nav {
     position: absolute; top: 50%; transform: translateY(-50%);
@@ -337,9 +375,10 @@ canvas {
   .ph-nav svg { width: 22px; height: 22px; display:block; }
 
   .ph-action { 
-    margin-top: -100px;
+    margin-top: 30px;
     display:flex; 
     justify-content:center;     
+    padding-bottom: 20px;
   }
 
   .ph-btn {
@@ -351,6 +390,71 @@ canvas {
     border-radius:12px; 
     text-decoration:none;
     font-weight:700; 
-    color:#111; 
-    background:#fff; 
+    color:#ffffff; 
+    background:#7a37e7; 
   }
+
+
+#thr{
+  padding-top: 60px;
+}
+
+  #chimg{
+    
+    width: 70%;
+   display: block;          /* inline → block으로 바꿔야 margin 작동함 */
+  margin: 0 auto;
+  margin-top: 20px;
+    
+  }
+
+  .tittle{
+    font-size: 30px;
+   text-align: center;
+  }
+  .mti{
+    margin: 50;
+  }
+ 
+  .mti h1{
+    font-size: 30px;
+    text-align: center;
+  }
+   .mti p{
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .logos{
+    width: 70%;
+     display: block;          /* inline → block으로 바꿔야 margin 작동함 */
+  margin: 0 auto;
+}
+.logo{
+  margin-top: 40px;
+}
+.logo p{
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-right: 20px;
+
+
+}
+.pst{
+  display: block;
+  margin: 0 auto;           /* 가운데 정렬 */
+  width: calc(100% - 40px); /* 좌우 20px 여백을 전체 크기에서 빼기 */
+  border: 2.5px solid #000; 
+  border-radius: 8px;       
+  box-sizing: border-box;   /* border 포함해서 크기 계산 */
+}
+
+.subheading2{
+  padding-top: 100px;
+  color: #fff;
+}
+
+#end{
+  height: 100px;
+}
