@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixiToy</title>
     <link rel="stylesheet" href="./index.css">
+
+    
+    <script type="importmap">
+    { "imports": {
+        "three":"https://unpkg.com/three@0.161.0/build/three.module.js",
+        "three/addons/":"https://unpkg.com/three@0.161.0/examples/jsm/"
+    } }
+    </script>
+    
 </head>
 <body>
+
     <div class="intro">
         <div class="cue"></div>
         <div class="top"><img src="../레시피북.png" id="img1"></div>
@@ -16,45 +26,478 @@
     <div class="content">
 
         <div class="frst">
-            <h1>웹페이지</h1>
-            <p>글자가 위아래로 갈라지면서 콘텐츠가 나타납니다!</p>
-            
+            <img src="./src/img/logo.png" class="flogo" alt="logo">
+            <p class="research">AR기술을 통해 현실과 가상 세계를 
+                  연결하여 몰입감 있는 팬시 문구 
+                  콘텐츠를 제공하는 브랜드 디자인 연구</p>
+
+                  <img id="fmock" src="./src/img/fmock.png" alt="mockupimg">
 
          </div>
+  
                 
 
 
-        <div class="cc">
+        <div class="sec">
+
+
+        
+
+          <!-- 단일 버튼 (현재 슬라이드에 따라 변경) -->
+        
+        
+
+
+
             <!-- 여기에 실제 콘텐츠 (이미지나 텍스트) -->
         <!-- SVG 코드 직접 삽입 -->
-            <section class="wave-section">
-                <svg
-                    class="wave-svg"
-                    viewBox="0 0 375 466.54"
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <defs>
-                    <linearGradient id="waveGradient" x1="0" y1="233.27" x2="375" y2="233.27" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#f0c4f9" />
-                        <stop offset="1" stop-color="#c2e2ff" />
-                    </linearGradient>
-                    </defs>
-                    <path
-                    fill="url(#waveGradient)"
-                    d="M375,466.54V4.16c-31.64,5.74-41.37,15.36-52.51,26.04-13.28,12.73-18.5,35.26-50.95,38.3
-                    -13.98,1.31-20.53,11.99-23.34,18.97-2.88,7.14-7.02,13.72-12.52,19.12
-                    -8.96,8.79-23.55,18.91-43.82,19.88-21.16,1.02-41.49-8.27-54.98-24.54
-                    -4.2-5.07-8.45-10.1-12.91-14.95-7.48-8.12-16.7-19.44-31.96-22.43
-                    -11.96-2.34-27.15-9.83-39.74-32.15C46.43,22.03,30.75,4.16,0,0v466.54h375Z"
-                    />
-                </svg>
-            </section>
+        
+            
+                
+         <div class="ph-viewer-wrap">
+
+          <div class="ph-viewer" id="phViewer" aria-roledescription="carousel" aria-label="이미지 뷰어">
+
+            <div class="ph-slide ph-active" id="phS0" aria-hidden="false">
+              <img class="ph-img" src="./src/img/ph.png" alt="투명 이미지 1">
+            </div>
+
+            <div class="ph-slide" id="phS1" aria-hidden="true">
+              <img class="ph-img" src="./src/img/ph1.png" alt="투명 이미지 2">
+            </div>
+
+            <!-- 좌/우 화살표 -->
+            <button class="ph-nav ph-left" id="phPrev" aria-label="이전">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);">
+                <polyline points="8 4 16 12 8 20"></polyline>
+              </svg>
+
+            </button>
+            <button class="ph-nav ph-right" id="phNext" aria-label="다음">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="8 4 16 12 8 20"></polyline>
+              </svg>
+            </button>
+
+          </div>
+          <div class="ph-action">
+            <a id="phActionBtn" class="ph-btn" href="https://example.com/site-a" target="_blank" rel="noopener"></a>
+          </div>
+        </div>
         </div>
 
+        <!-- 버튼 -->
+        
+
+
+        <div class="carousel-wrapper">
+            <div class="carousel-container">
+              <div class="carousel-items" id="carousel">
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1500595046891-e39ddb8d39d0?w=400&h=400&fit=crop" alt="캐로셀 1">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400&h=400&fit=crop" alt="캐로셀 2">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=400&fit=crop" alt="캐로셀 3">
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop" alt="캐로셀 4">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- 모델링 부분 -->
+        <div id="viewer">
+      <button id="swapBtn">다른 모델 보기 ▶</button>
     </div>
+
+<div class="purple">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375.08 81.61" style="display:block; width:100%; height:auto;">
+      <path fill="#ffffff" d="M0,0c0,48.26,215.7,94.38,375.08,78.38V0H0Z"/>
+    </svg>
+
+
+    <div class="slider-wrapper">
+      <div class="slider-container" id="slider">
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe3e?w=400&h=400&fit=crop" alt="이미지 1">
+        </div>
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=400&fit=crop" alt="이미지 2">
+        </div>
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop" alt="이미지 3">
+        </div>
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1454849882554-f386519e7f1d?w=400&h=400&fit=crop" alt="이미지 4">
+        </div>
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1479365344106-d44aafd1d584?w=400&h=400&fit=crop" alt="이미지 5">
+        </div>
+        <div class="slider-item">
+          <img src="https://images.unsplash.com/photo-1486318404953-3c6b89b99ee2?w=400&h=400&fit=crop" alt="이미지 6">
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+</div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<!-- 휴대폰 부분_____________________________________________________________________ -->
+     <script>
+    (function () {
+      const slides = [document.getElementById('phS0'), document.getElementById('phS1')];
+      const btnPrev = document.getElementById('phPrev');
+      const btnNext = document.getElementById('phNext');
+      const actionBtn = document.getElementById('phActionBtn');
+
+      const actions = [
+        { href: 'https://yooningu.github.io/ar.js-test', label: 'START AR' },
+        { href: 'https://yooningu.github.io/suika-game', label: 'START GAME' }
+      ];
+
+      let idx = 0;
+
+      function render() {
+        slides.forEach((el, i) => {
+          el.classList.toggle('ph-active', i === idx);
+          el.setAttribute('aria-hidden', i === idx ? 'false' : 'true');
+        });
+        actionBtn.href = actions[idx].href;
+        actionBtn.textContent = actions[idx].label;
+      }
+
+      function prev() { idx = (idx + slides.length - 1) % slides.length; render(); }
+      function next() { idx = (idx + 1) % slides.length; render(); }
+
+      btnPrev.addEventListener('click', prev);
+      btnNext.addEventListener('click', next);
+
+      // 간단한 스와이프 제스처
+      let startX = 0, startY = 0, moved = false;
+      const viewer = document.getElementById('phViewer');
+
+      viewer.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; moved = false;
+      }, { passive: true });
+
+      viewer.addEventListener('touchmove', (e) => {
+        const t = e.touches[0];
+        const dx = t.clientX - startX;
+        const dy = t.clientY - startY;
+        if (!moved && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 24) {
+          moved = true;
+          (dx < 0 ? next : prev)();
+        }
+      }, { passive: true });
+
+      render();
+    })();
+    </script>
+
+    <!-- 모델링 부분 ──────────────────────────────────────────────────────── -->
+    <script type="module">
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+      import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+      const container = document.getElementById('viewer');
+      const swapBtn   = document.getElementById('swapBtn');
+
+      // ── 장면/카메라/렌더러 ─────────────────────────────────────────────
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xffffff);
+
+      const camera = new THREE.PerspectiveCamera(
+        35, // ↓ 원근감 완화 (기존 60보다 덜 왜곡)
+        container.clientWidth / container.clientHeight,
+        0.01,  // 가까운 면 (클리핑 방지)
+        5000   // 먼 면
+      );
+      camera.position.set(0, 1.2, 3);
+
+      const renderer = new THREE.WebGLRenderer({ antialias:true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      container.appendChild(renderer.domElement);
+
+      // ── 조명 ──────────────────────────────────────────────────────────
+      scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 3.3));
+      const dir = new THREE.DirectionalLight(0xffffff, 3.6);
+      dir.position.set(3,10,10);
+      scene.add(dir);
+
+      // ── 컨트롤 ────────────────────────────────────────────────────────
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      // controls.minPolarAngle = Math.PI / 2; controls.maxPolarAngle = Math.PI / 2; // 좌우만 회전 비활성화
+
+    //모델
+      const MODELS = [
+        {
+          url: 'https://yooningu.github.io/ar.js-test/gltf/cat-glb/p-cat.glb',
+          scale: 0.01,
+          position: { x: 0,   y: 0,   z: 0 },
+          rotation: { x: 0,   y: 0,   z: 0 }
+        },
+        {
+          url: 'https://yooningu.github.io/ar.js-test/gltf/cat-glb/cat-glb.glb',
+          scale: 0.001,
+          position: { x: 0, y: 0,   z: 0 },          // 위치
+          rotation: { x: 0, y:0, z: 0 }     //각도
+        }
+      ];
+
+      const loader = new GLTFLoader();
+      const models = [];
+      let current = 0;
+
+      // 모델 로드 & 준비
+      async function loadModel({ url, scale, position, rotation }) {
+        const gltf = await loader.loadAsync(url);
+        const model = gltf.scene;
+        model.scale.setScalar(scale);
+
+        // 중앙/바닥 정렬 (원점에 모델 중심+바닥 맞춤)
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.set(-center.x, -box.min.y, -center.z);
+
+        // 사용자 위치/회전 적용
+        model.position.add(new THREE.Vector3(position.x, position.y, position.z));
+        model.rotation.set(rotation.x, rotation.y, rotation.z);
+
+        model.visible = false;
+        scene.add(model);
+        return model;
+      }
+
+      // 모델 크기 기반으로 카메라/컨트롤 세팅 (투시 완화 + 과도 확대 방지)
+      function frameToObject(object, padding = 1.4) {
+        const box = new THREE.Box3().setFromObject(object);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+
+        // 컨트롤 타겟을 모델 중심 근처로
+        controls.target.copy(center);
+        controls.target.y = Math.max(center.y, size.y * 0.4);
+        controls.update();
+
+        // 모델 최대 치수
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const fov = camera.fov * Math.PI / 180;
+        const fitDist = (maxDim / 2) / Math.tan(fov / 2); // 카메라가 모델을 담기 위한 기준 거리
+
+        camera.position.set(center.x, center.y + maxDim * 0.25, center.z + fitDist * padding);
+        camera.near = Math.max(0.00001, maxDim / 1/10);
+        camera.far  = Math.max(500,  maxDim * 200);
+        camera.updateProjectionMatrix();
+
+        // 너무 가까이 못 가게 (클리핑 방지)
+        controls.minDistance = fitDist * 0.02;  // 이 값보다 더 가까이 줌 불가
+        controls.maxDistance = fitDist * 6;    // 과도하게 멀어지는 것도 제한
+      }
+
+      // 초기 로드 & 세팅
+      (async () => {
+        const a = await loadModel(MODELS[0]);
+        const b = await loadModel(MODELS[1]);
+        models.push(a, b);
+
+        // 첫 모델 표시 + 프레이밍
+        models[0].visible = true;
+        frameToObject(models[0]);
+
+        // 버튼 토글
+        swapBtn.addEventListener('click', () => {
+          models[current].visible = false;
+          current = (current + 1) % models.length;
+          models[current].visible = true;
+          frameToObject(models[current]); // 전환 시마다 카메라/거리 재설정
+          swapBtn.textContent = current === 0 ? '다른 모델 보기 ▶' : '처음 모델로 ◀';
+        });
+      })();
+
+      // 리사이즈
+      window.addEventListener('resize', () => {
+        const w = container.clientWidth, h = container.clientHeight;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+      });
+
+      // 루프
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+    </script>
+
+
+
+<!-- 슬라이더_____________________________________________________________________________________________________ -->
+    <script>
+    // ===== 수동 슬라이더 =====
+    const slider = document.getElementById('slider');
+    const sliderDots = document.getElementById('sliderDots');
+
+    const slides = Array.from(slider.querySelectorAll('.slider-item'));
+    const slideCount = slides.length;
+
+    function buildSliderDots() {
+      sliderDots.innerHTML = '';
+      for (let i = 0; i < slideCount; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goToSlide(i));
+        sliderDots.appendChild(dot);
+      }
+    }
+
+    function currentSlideIndex() {
+      const w = slider.clientWidth;
+      return Math.round(slider.scrollLeft / w);
+    }
+
+    function goToSlide(index) {
+      const clamped = Math.max(0, Math.min(slideCount - 1, index));
+      slider.scrollTo({ left: clamped * slider.clientWidth, behavior: 'smooth' });
+      updateSliderDots(clamped);
+    }
+
+    function updateSliderDots(activeIndex = currentSlideIndex()) {
+      const dots = sliderDots.querySelectorAll('.dot');
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+    }
+
+    // 스크롤 시 활성 도트 갱신
+    slider.addEventListener('scroll', () => updateSliderDots());
+
+    // 드래그/스와이프
+    let isDown = false, startX = 0, startScrollLeft = 0, dragDelta = 0;
+
+    const startDrag = (e) => {
+      isDown = true;
+      startX = (e.touches ? e.touches[0].pageX : e.pageX);
+      startScrollLeft = slider.scrollLeft;
+      dragDelta = 0;
+    };
+    const moveDrag = (e) => {
+      if (!isDown) return;
+      const x = (e.touches ? e.touches[0].pageX : e.pageX);
+      dragDelta = x - startX;
+      slider.scrollLeft = startScrollLeft - dragDelta;
+    };
+    const endDrag = () => {
+      if (!isDown) return;
+      isDown = false;
+      const threshold = slider.clientWidth * 0.15; // 15% 이상 드래그 시 페이지 넘김
+      let index = currentSlideIndex();
+      if (Math.abs(dragDelta) > threshold) {
+        index = dragDelta < 0 ? index + 1 : index - 1;
+      }
+      goToSlide(index);
+    };
+
+    slider.addEventListener('mousedown', startDrag);
+    slider.addEventListener('mousemove', moveDrag);
+    slider.addEventListener('mouseup', endDrag);
+    slider.addEventListener('mouseleave', endDrag);
+    slider.addEventListener('touchstart', startDrag, { passive: true });
+    slider.addEventListener('touchmove', moveDrag, { passive: true });
+    slider.addEventListener('touchend', endDrag);
+
+    // 초기화
+    buildSliderDots();
+    updateSliderDots(0);
+
+    // 리사이즈 시 현재 인덱스로 다시 스냅
+    window.addEventListener('resize', () => {
+      goToSlide(currentSlideIndex());
+    });
+
+    // ===== 자동 캐로셀 (도트 없음) =====
+    const carousel = document.getElementById('carousel');
+    const carouselItems = Array.from(carousel.querySelectorAll('.carousel-item'));
+    const carouselCount = carouselItems.length;
+    let currentIndex = 0;
+
+    function autoSlide() {
+      currentIndex = (currentIndex + 1) % carouselCount;
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    setInterval(autoSlide, 4000);
+  </script>
         
 </body>
-</html>
-
 </html>

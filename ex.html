@@ -1,0 +1,130 @@
+
+<style>
+  :root { --h: 60vh; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; background:#111; color:#fff; }
+  .wrap { max-width: 540px; margin: 0 auto; padding: 16px; }
+
+  /* 뷰어 영역 */
+  .viewer { position: relative; height: var(--h); border-radius: 16px; overflow: hidden; background: transparent; }
+  .slide {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    opacity: 0; transition: opacity .35s ease;
+    pointer-events: none;  /* 클릭 막기 */
+  }
+  .slide.active { opacity: 1; pointer-events: auto; }
+  .slide img { max-width: 100%; max-height: 100%; object-fit: contain; user-select: none; }
+
+  /* 좌/우 네비 버튼 (양옆 고정) */
+  .nav-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 999px;
+    display: grid; place-items: center;
+    background: rgba(0,0,0,.28); border: none; padding: 0;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn:active { transform: translateY(-50%) scale(.96); }
+  .nav-left  { left: 8px; }
+  .nav-right { right: 8px; }
+  .nav-btn svg { width: 22px; height: 22px; display:block; }
+
+  /* 하단 단일 버튼 */
+  .btn-wrap { display:flex; justify-content:center; margin-top: 14px; }
+  .btn {
+    display:inline-flex; justify-content:center; align-items:center;
+    height:48px; padding:0 18px; border-radius:12px; text-decoration:none;
+    font-weight:700; color:#111; background:#fff; min-width: 180px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 페이드 전환 뷰어 -->
+    <div class="viewer" id="viewer" aria-roledescription="carousel" aria-label="이미지 뷰어">
+      <!-- 첫 번째 이미지 -->
+      <div class="slide active" id="s0" aria-hidden="false">
+        <img src="image1.png" alt="투명 이미지 1" />
+      </div>
+      <!-- 두 번째 이미지 -->
+      <div class="slide" id="s1" aria-hidden="true">
+        <img src="image2.png" alt="투명 이미지 2" />
+      </div>
+
+      <!-- 좌/우 화살표 버튼 -->
+      <button class="nav-btn nav-left" id="prev" aria-label="이전">
+        <!-- 왼쪽 화살표 (rotate로 방향 전환) -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);">
+          <polyline points="8 4 16 12 8 20"></polyline>
+        </svg>
+      </button>
+      <button class="nav-btn nav-right" id="next" aria-label="다음">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="8 4 16 12 8 20"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 단일 액션 버튼: 현재 보이는 이미지에 따라 바뀜 -->
+    <div class="btn-wrap">
+      <a id="actionBtn" class="btn" href="https://example.com/site-a" target="_blank" rel="noopener">사이트 A로 이동</a>
+    </div>
+
+  </div>
+
+<script>
+(function () {
+  const slides = [document.getElementById('s0'), document.getElementById('s1')];
+  const btnPrev = document.getElementById('prev');
+  const btnNext = document.getElementById('next');
+  const actionBtn = document.getElementById('actionBtn');
+
+  // 슬라이드별 버튼 동작 정의
+  const actions = [
+    { href: 'https://yooningu.github.io/ar.js-test/', label: 'START AR' },
+    { href: 'https://yooningu.github.io/suika-game/', label: 'START GAME' }
+  ];
+
+  let idx = 0; // 현재 슬라이드 (0 또는 1)
+
+  function render() {
+    slides.forEach((el, i) => {
+      el.classList.toggle('active', i === idx);
+      el.setAttribute('aria-hidden', i === idx ? 'false' : 'true');
+    });
+    actionBtn.href = actions[idx].href;
+    actionBtn.textContent = actions[idx].label;
+  }
+
+  function prev() { idx = (idx + slides.length - 1) % slides.length; render(); }
+  function next() { idx = (idx + 1) % slides.length; render(); }
+
+  btnPrev.addEventListener('click', prev);
+  btnNext.addEventListener('click', next);
+
+  // 간단한 탭/스와이프 제스처(선택사항)
+  let startX = 0, startY = 0, moved = false;
+  const viewer = document.getElementById('viewer');
+
+  viewer.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    startX = t.clientX; startY = t.clientY; moved = false;
+  }, { passive: true });
+
+  viewer.addEventListener('touchmove', (e) => {
+    const t = e.touches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+    if (!moved && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 24) {
+      moved = true;
+      (dx < 0 ? next : prev)();
+    }
+  }, { passive: true });
+
+  // 초기 렌더
+  render();
+})();
+</script>
+</body>
+
