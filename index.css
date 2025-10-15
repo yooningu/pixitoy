@@ -74,7 +74,6 @@ body {
 }
 .subheading{
   margin-left: 20px;
-  margin-top: 30px;
   font-size: 30px;
   font-family: 'OmuDaye', sans-serif;
   color: #7a37e7;
@@ -442,13 +441,15 @@ canvas {
     font-size: 30px;
     text-align: center;
     font-family: 'OmuDaye', sans-serif;
-    color: #7a37e7; 
+    color: #4a388a; 
     
   }
    .mti p{
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
+     font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 400;
   }
 
   .logos{
@@ -476,8 +477,11 @@ canvas {
 }
 
 .subheading2{
-  padding-top: 100px;
   color: #fff;
+   font-family: 'OmuDaye', sans-serif;
+   margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 30px;
 }
 
 #end{
@@ -490,4 +494,29 @@ canvas {
   font-size: 16px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
+}
+.blnk{
+  height: 100px;
+}
+#gmic{
+ display: block;
+  margin: 0 auto;           /* 가운데 정렬 */
+  width: calc(100% - 40px); /* 좌우 20px 여백을 전체 크기에서 빼기 */
+  border: 2.5px solid #000; 
+  border-radius: 8px;       
+  box-sizing: border-box;  
+}
+.lsts P h1{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.lsts h1{
+  font-size: 20px;
+}
+.lsts p{
+  font-size: 10px;
+}
+.lsts{
+  margin: 20px;
+  padding-top: 100px;
+  padding-bottom: 30px;
 }
