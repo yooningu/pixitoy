@@ -240,24 +240,25 @@ canvas {
     /* 자동 캐로셀 */
     .carousel-wrapper {
       border-radius: 12px;
-      width: 200px;
-      height: 180px;
+      margin-left: 20px;
+      margin-right: 20px;
+      height: auto;
       display: block;          /* inline → block으로 바꿔야 margin 작동함 */
-     margin: 0 auto;
-     background-image:url(./src/img/ch\ back.svg) ;
+      background-image:url(./src/img/ch\ back.svg) ;
+      background-repeat: no-repeat;  /* 배경 이미지 반복 방지 */
+            /* 배경 이미지 영역에 맞게 크기 조절 */
+      background-position: center;
     }
 
     .carousel-container {
       position: relative;
-      width: 100%;
+      
       aspect-ratio: 1;
       overflow: hidden;
     }
 
     .carousel-items {
       display: flex;
-      width: 100%;
-      height: 90%;
       transition: transform 0.5s ease-in-out;
     }
 
