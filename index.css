@@ -27,6 +27,29 @@ body {
 #sec{
   margin-top: 60px;
 }
+.stack {
+  display: grid;
+  position: relative;   /* 쌓임 문맥 안정화 */
+  isolation: isolate;   /* (선택) 외부 z-index 간섭 차단 */
+}
+
+/* 둘 다 같은 셀에 올리기 */
+.stack > * {
+  grid-area: 1 / 1;
+}
+
+#fpst {
+  display: block;
+  width: 100%;
+  height: auto;         /* 이미지가 높이 결정 */
+  position: relative;
+  z-index: 0;           /* 뒤 */
+}
+.frst-content {
+  position: relative;
+  z-index: 1;           /* 앞 */
+  
+}
 
 /* ---------------------------
    INTRO (열리는 장면)
@@ -119,10 +142,8 @@ body {
 
 #frst { 
   background: rgb(231, 230, 255);
-  padding: 0 20px;
+  
   height: auto; 
-  padding-top: 70px;
-  padding-bottom: 30px;
 }
 .line {
   height: 2PX;
@@ -307,6 +328,7 @@ canvas {
     }
    
     .flogo {
+      padding-top: 50px;
       width: 70%;
         display: block;
       margin: 0 auto;
@@ -316,10 +338,11 @@ canvas {
     .research {
       font-size: 20px;
       margin-top: 35px;
-      margin-right: 20px;
+      margin-right: 30px;
+      margin-left: 30px;
       font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 800;
-  color: #320773;
+  font-weight: 700;
+  color: #ffffff;
     }
 
     #fmock {
