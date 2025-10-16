@@ -372,7 +372,7 @@ canvas {
   .ph-viewer {
     
   position: relative;
-  height: 300px;
+  height: 500px;
   border-radius: 16px;
   background: transparent;
   overflow: hidden; /* 선택: 넘침 방지 */
@@ -431,12 +431,13 @@ canvas {
     justify-content:center; 
     align-items:center;
     height:36px; 
-    padding:0 18px; 
+    padding:10 36px; 
     border-radius:12px; 
     text-decoration:none;
     font-weight:700; 
     color:#ffffff; 
     background:#7a37e7; 
+    font-size: 24px;
   }
 
 
@@ -456,6 +457,9 @@ canvas {
   .tittle{
     font-size: 30px;
    text-align: center;
+     font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 800;
+  color: #4a388a; 
   }
   .mti{
     margin: 50;
@@ -506,6 +510,7 @@ canvas {
    margin-top: 30px;
   margin-bottom: 30px;
   font-size: 30px;
+  margin-left: 20px;
 }
 
 #end{
