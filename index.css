@@ -155,6 +155,23 @@ body {
   display: block;
   margin: 0 auto;
 }
+#img1{
+  margin-bottom: 20px;
+font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: center;
+  color: #505050;
+}
+#imgt{
+  margin-bottom: 30px;
+  color: #848484;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+
+}
 
 #img1{
      opacity: 0;
@@ -534,6 +551,7 @@ canvas {
   border: 2.5px solid #000; 
   border-radius: 8px;       
   box-sizing: border-box;  
+  padding: 20px;
 }
 .lsts P h1{
   font-family: 'Noto Sans KR', sans-serif;
