@@ -408,7 +408,10 @@ canvas {
 }
 
 
-  .ph-slide.ph-active { opacity: 1; pointer-events: auto; ;
+  .ph-slide.ph-active {
+     opacity: 1; pointer-events: auto; ;
+     animation: jelly-neon-combo 0.6s ease;
+
      }
 
  
@@ -452,11 +455,57 @@ canvas {
     border-radius:12px; 
     text-decoration:none;
     font-weight:700; 
-    color:#ffffff; 
-    background:#7a37e7; 
     font-size: 24px;
+    background: linear-gradient(45deg, #FF006E, #8338EC, #3A86FF);
+    background-size: 200% 200%;
+    color: white;
+    border: 3px solid #fff;
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6),
+                0 0 60px rgba(131, 56, 236, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 0, 110, 0.6);
+    animation: neon-glow 2s ease-in-out infinite;
   }
 
+
+@keyframes neon-glow {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 0, 110, 0.6),
+                    0 0 60px rgba(131, 56, 236, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.2);
+        background-position: 0% 50%;
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 0, 110, 0.8),
+                    0 0 80px rgba(131, 56, 236, 0.6),
+                    inset 0 0 40px rgba(255, 255, 255, 0.3);
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes jelly-neon-combo {
+    0%, 100% { 
+        transform: scale(0.95);
+        box-shadow: 0 0 50px rgba(255, 0, 110, 1),
+                    0 0 100px rgba(131, 56, 236, 0.8);
+    }
+    25% { 
+        transform: scale(1.08) rotate(3deg);
+        box-shadow: 0 0 60px rgba(255, 0, 110, 1),
+                    0 0 120px rgba(131, 56, 236, 1);
+    }
+    50% { 
+        transform: scale(0.96) rotate(-3deg);
+        box-shadow: 0 0 55px rgba(255, 0, 110, 1),
+                    0 0 110px rgba(131, 56, 236, 0.9);
+    }
+    75% { 
+        transform: scale(1.04) rotate(2deg);
+        box-shadow: 0 0 65px rgba(255, 0, 110, 1),
+                    0 0 130px rgba(131, 56, 236, 1);
+    }
+}
 
 #thr{
   padding-top: 60px;
