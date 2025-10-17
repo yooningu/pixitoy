@@ -83,7 +83,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50vh;
+  height: 50%;
   background-color: #fff;
 }
 
